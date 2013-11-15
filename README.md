@@ -30,7 +30,7 @@ java -jar target/insight-web-1.0.0-war-exec.jar
 * Deploy to your Tomcat server:
 
 ```
-mvn clean package tomcat7:deploy
+mvn clean package tomcat:undeploy tomcat7:deploy
     -Dtomcat.url=URL
     -Dtomcat.username=USERNAME
     -Dtomcat.password=PASSWORD
