@@ -5,6 +5,7 @@ The administration web-interface for the Insight plugin.
 
 # Installation
 
+* Ensure that you have JRE 1.7.0 or above.
 * Clone the project.
 * Import the project into your IDE of choice.
 * Ensure you have a Tomcat8 instance installed and running (if you are not planning on doing standalone deployment).
