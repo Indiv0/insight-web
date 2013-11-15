@@ -2,15 +2,14 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
+<web-app
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    id="Insight_Web"
+    version="2.5">
     <display-name>Insight Web Administration Application</display-name>
-
-    <servlet>
-        <servlet-name>HomeServlet</servlet-name>
-        <display-name>HomeServlet</display-name>
-        <description>Home page for Insight WEb Administration Application</description>
-        <jsp-file>/index.jsp</jsp-file>
-    </servlet>
 
     <servlet>
         <servlet-name>HomeServlet</servlet-name>
