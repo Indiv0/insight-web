@@ -4,9 +4,22 @@
 
 <web-app>
     <display-name>Insight Web Administration Application</display-name>
+
+    <!--
     <servlet>
         <servlet-name>RootServlet</servlet-name>
         <servlet-class>in.nikitapek.insightweb.RootServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RootServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>-->
+    <servlet>
+        <servlet-name>RootServlet</servlet-name>
+        <display-name>Insight Web Administration Application</display-name>
+        <description>The index page for the Insight web-administration application</description>
+        <jsp-file>/index.jsp</jsp-file>
     </servlet>
 
     <servlet-mapping>
