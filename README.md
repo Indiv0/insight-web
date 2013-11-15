@@ -15,20 +15,26 @@ The administration web-interface for the Insight plugin.
 
 * Create the standalone .jar file:
 
-    mvn clean package tomcat7:exec-war-only
+```
+mvn clean package tomcat7:exec-war-only
+```
 
 * Execute the server:
 
-    java -jar target/insight-web-1.0.0-war-exec.jar
+```
+java -jar target/insight-web-1.0.0-war-exec.jar
+```
 
 ## Server
 
 * Deploy to your Tomcat server:
 
-    mvn clean package tomcat7:deploy
-        -Dtomcat.url=URL
-        -Dtomcat.username=USERNAME
-        -Dtomcat.password=PASSWORD
+```
+mvn clean package tomcat7:deploy
+    -Dtomcat.url=URL
+    -Dtomcat.username=USERNAME
+    -Dtomcat.password=PASSWORD
+```
 
 # Common Issues
 
