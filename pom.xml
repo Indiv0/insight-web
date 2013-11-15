@@ -27,6 +27,13 @@
     </pluginRepositories>
 
     <dependencies>
+        <!-- Marble -->
+        <dependency>
+            <groupId>in.nikitapek</groupId>
+            <artifactId>marble</artifactId>
+            <version>1.15.1</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
