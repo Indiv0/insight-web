@@ -5,21 +5,27 @@ The administration web-interface for the Insight plugin.
 
 # Installation
 
-* Clone the project
-* Import the project into your IDE of choice
-* Ensure you have a tomcat instance installed and running
-* [Configure](http://stackoverflow.com/questions/6549504/maven-server-in-settings-xml) your settings.xml with the server login info.
+* Clone the project.
+* Import the project into your IDE of choice.
+* Ensure you have a Tomcat8 instance installed and running (if you are not planning on doing standalone deployment).
 
 # Deployment
 
 ## Standalone
 
-* Run `mvn clean package tomcat7:exec-war-only` to create the standalone .war file
-* Run `java -jar target/insight-web-1.0.0-war-exec.jar`
+* Create the standalone .jar file:
+
+    `mvn clean package tomcat7:exec-war-only`
+
+* Execute the server:
+
+    `java -jar target/insight-web-1.0.0-war-exec.jar`
 
 ## Server
 
-* Run `mvn clean package tomcat7:deploy -Dtomcat.url=URL -Dtomcat.username=USERNAME -Dtomcat.password=PASSWORD` to deploy to your local tomcat server.
+* Deploy to your Tomcat server:
+
+    `mvn clean package tomcat7:deploy -Dtomcat.url=URL -Dtomcat.username=USERNAME -Dtomcat.password=PASSWORD` to deploy to your local tomcat server.
 
 # Common Issues
 
