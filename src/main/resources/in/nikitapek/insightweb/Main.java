@@ -1,30 +1,27 @@
 package in.nikitapek.insightweb;
 
-import in.nikitapek.marble.sql.SQLConnector;
+import org.apache.catalina.startup.Tomcat;
+
+import java.io.File;
 
 public class Main {
-    public static final String columnNames = "`id`, `x`, `y`, `z`";
-    public static final String databaseName = "marbleTest";
-    public static final String tableName = "data";
+    public static void main(String[] args) throws Exception {
+        String webappDirLocation = "src/main/webapp/";
+        Tomcat tomcat = new Tomcat();
 
-    public static void initializeSQL() {
-        String dbhostname = System.getProperty("dbhostname");
-        String dbusername = System.getProperty("dbusername");
-        String dbpassword = System.getProperty("dbpassword");
-        String dbport = System.getProperty("dbport");
-
-        if (dbhostname == null || dbusername == null || dbpassword == null || dbport == null) {
-            throw new RuntimeException("Invalid configuration. Make sure to set dbhostname, dbusername, dbpassword, and dbport!");
+        //The port that we should run on can be set into an environment variable
+        //Look for that variable and default to 8080 if it isn't there.
+        String webPort = System.getenv("PORT");
+        if(webPort == null || webPort.isEmpty()) {
+            webPort = "8080";
         }
 
-        SQLConnector.initializeSQL(dbhostname, dbusername, dbpassword, dbport, databaseName, true);
+        tomcat.setPort(Integer.valueOf(webPort));
 
-        // Drop the database in case it remains from a previous test case.
-        dropDatabase(databaseName);
-    }
+        tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());
+        System.out.println("configuring app with basedir: " + new File("./" + webappDirLocation).getAbsolutePath());
 
-    public static void endTest() {
-        dropDatabase(databaseName);
-        SQLConnector.disconnect();
+        tomcat.start();
+        tomcat.getServer().await();
     }
 }

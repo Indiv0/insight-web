@@ -7,9 +7,7 @@
 
     <servlet>
         <servlet-name>RootServlet</servlet-name>
-        <display-name>Insight Web Administration Application</display-name>
-        <description>The index page for the Insight web-administration application</description>
-        <jsp-file>/index.jsp</jsp-file>
+        <servlet-class>in.nikitapek.insightweb.RootServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
