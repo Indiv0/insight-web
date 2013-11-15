@@ -4,13 +4,21 @@
 
 <web-app>
     <display-name>Insight Web Administration Application</display-name>
+
     <servlet>
-        <servlet-name>RootServlet</servlet-name>
-        <servlet-class>in.nikitapek.insightweb.RootServlet</servlet-class>
+        <servlet-name>HomeServlet</servlet-name>
+        <display-name>HomeServlet</display-name>
+        <description>Home page for Insight WEb Administration Application</description>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ConnectServlet</servlet-name>
+        <servlet-class>in.nikitapek.insightweb.ConnectServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>RootServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <servlet-name>ConnectServlet</servlet-name>
+        <url-pattern>/connect</url-pattern>
     </servlet-mapping>
 </web-app>

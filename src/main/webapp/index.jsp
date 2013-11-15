@@ -57,6 +57,8 @@
                 <p>
                 <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
                 </p>
+                <h1>SQL Results</h1>
+                ${sql.results}
             </div>
         </div> <!-- /container -->
 
