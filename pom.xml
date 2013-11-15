@@ -32,7 +32,6 @@
             <groupId>in.nikitapek</groupId>
             <artifactId>marble</artifactId>
             <version>1.15.1</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -320,20 +319,24 @@
                         <target>1.7</target>
                     </configuration>
                 </plugin>
+                <!-- This is necessary for Maven dependencies to be deployed to Tomcat -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.4</version>
+                    <executions>
+                        <execution>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/lib/</outputDirectory>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
-
-    <profiles>
-        <profile>
-            <id>tomcat-localhost</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <tomcat.server>localhost</tomcat.server>
-                <tomcat.url>http://feral.nikitapek.in:8080/manager/html</tomcat.url>
-            </properties>
-        </profile>
-    </profiles>
 </project>

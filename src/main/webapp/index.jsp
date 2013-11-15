@@ -25,7 +25,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="connect">Connect</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -58,7 +58,8 @@
                 <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
                 </p>
                 <h1>SQL Results</h1>
-                ${sql.results}
+                <%String name=(String)request.getSession().getAttribute("username");%>
+                <%=name%>
             </div>
         </div> <!-- /container -->
 

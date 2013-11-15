@@ -13,6 +13,13 @@
     </servlet>
 
     <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <display-name>HomeServlet</display-name>
+        <description>Home page for Insight WEb Administration Application</description>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+
+    <servlet>
         <servlet-name>ConnectServlet</servlet-name>
         <servlet-class>in.nikitapek.insightweb.ConnectServlet</servlet-class>
     </servlet>
