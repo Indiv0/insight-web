@@ -30,12 +30,18 @@ public class ConnectServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        if(url.equals("URL") || port.equals("Port") || username.equals("Username") || password.equals("Password")){
+        if (url.equals("URL") || port.equals("Port") || username.equals("Username") || password.equals("Password")){
             request.setAttribute("problem", "Please fill all fields");
 
             dispatch = request.getRequestDispatcher("connect.jsp");
             dispatch.forward(request, response);
-        }else{
+        } else if (url == null || port == null || username == null || password == null) {
+            request.setAttribute("problem", "Values cannot be null.");
+
+            dispatch = request.getRequestDispatcher("connect.jsp");
+            dispatch.forward(request, response);
+        }
+        else {
             try {
                 int portNumber = Integer.parseInt(port);
 

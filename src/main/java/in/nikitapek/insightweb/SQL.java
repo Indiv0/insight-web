@@ -9,11 +9,16 @@ public class SQL {
     public static final String columnNames = "`id`, `x`, `y`, `z`";
     public static final String databaseName = "marbleTest";
     public static final String tableName = "data";
+    public static boolean initialized = false;
+
 
     public static void initializeSQL(String url, String username, String password, String port) {
         if (url == null || username == null || password == null || port == null) {
+            initialized = false;
             throw new RuntimeException("Invalid configuration. Make sure to set dbhostname, dbusername, dbpassword, and dbport!");
         }
+
+        initialized = true;
 
         SQLConnector.initializeSQL(url, username, password, port, databaseName, true);
     }
@@ -24,6 +29,10 @@ public class SQL {
     }
 
     public static boolean isConnected() {
-        return SQLConnector.getConnection() != null;
+        if (initialized) {
+            return SQLConnector.getConnection() != null;
+        }
+
+        return false;
     }
 }
