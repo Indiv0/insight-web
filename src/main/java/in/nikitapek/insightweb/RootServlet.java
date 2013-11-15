@@ -17,5 +17,4 @@ public class RootServlet extends HttpServlet {
         out.flush();
         out.close();
     }
-
 }
