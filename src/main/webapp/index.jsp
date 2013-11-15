@@ -1,5 +1,3 @@
-<%@ page import="in.nikitapek.insightweb.*" %>
-
 <!DOCTYPE html>
 <html>
     <head>
