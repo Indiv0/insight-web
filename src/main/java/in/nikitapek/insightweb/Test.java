@@ -2,6 +2,7 @@ package in.nikitapek.insightweb;
 
 import in.nikitapek.marble.sql.Handler;
 import in.nikitapek.marble.sql.MarbleDatabase;
+import in.nikitapek.marble.sql.MetadataQueries;
 import in.nikitapek.marble.sql.SQLConnector;
 import in.nikitapek.marble.util.Util;
 
@@ -11,10 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import static in.nikitapek.marble.sql.MetadataQueries.dropDatabase;
-import static in.nikitapek.marble.util.Util.closeStatement;
-import static in.nikitapek.marble.util.Util.generateRandomHandler;
 
 public class Test {
     private static final int insertionSize = 100;
@@ -26,12 +23,12 @@ public class Test {
         SQLConnector.autoCommitStatements = autoCommitStatements;
         Connection connection = SQLConnector.getConnection();
 
-        dropDatabase(SQL.databaseName);
+        MetadataQueries.dropDatabase(SQL.databaseName);
         MarbleDatabase.setupDatabase(SQL.tableName);
 
         List<Handler> handlerList = new ArrayList<>();
         for (int i = 0; i < insertionSize; i++) {
-            handlerList.add(generateRandomHandler());
+            handlerList.add(Util.generateRandomHandler());
         }
 
         Long initialTime = System.currentTimeMillis();
@@ -88,8 +85,8 @@ public class Test {
         } catch (SQLException e) {
             System.out.println("Failed to test handler insertion.");
         } finally {
-            closeStatement(statement);
-            closeStatement(preparedStatement);
+            Util.closeStatement(statement);
+            Util.closeStatement(preparedStatement);
         }
 
         Long deltaTime = System.currentTimeMillis() - initialTime;

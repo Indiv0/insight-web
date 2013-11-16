@@ -3,8 +3,6 @@ package in.nikitapek.insightweb;
 import in.nikitapek.marble.sql.MetadataQueries;
 import in.nikitapek.marble.sql.SQLConnector;
 
-import javax.servlet.http.HttpSession;
-
 public class SQL {
     public static final String columnNames = "`id`, `x`, `y`, `z`";
     public static final String databaseName = "marbleTest";
