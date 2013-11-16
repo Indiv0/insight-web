@@ -17,13 +17,13 @@ The administration web-interface for the Insight plugin.
 * Create the standalone .jar file:
 
 ```
-mvn clean package tomcat7:exec-war-only
+mvn clean package -P standalone
 ```
 
 * Execute the server:
 
 ```
-java -jar target/insight-web-1.0.0-war-exec.jar
+java -jar target/insight-web-1.0.0.jar
 ```
 
 ## Server

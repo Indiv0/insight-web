@@ -1,16 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>in.nikitapek</groupId>
     <artifactId>insight-web</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-    <name>insight-web Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <name>Insight Website</name>
 
-    <properties>
-        <tomcat.version>8.0.0-RC5</tomcat.version>
-    </properties>
+    <parent>
+        <groupId>com.amshulman</groupId>
+        <artifactId>insight-parent</artifactId>
+        <version>1.15</version>
+    </parent>
+
+    <repositories>
+        <repository>
+            <id>minerap-repo</id>
+            <name>MinerAp</name>
+            <url>http://repo.minerap.com/</url>
+        </repository>
+    </repositories>
 
     <pluginRepositories>
         <pluginRepository>
@@ -27,316 +38,82 @@
     </pluginRepositories>
 
     <dependencies>
-        <!-- Marble -->
         <dependency>
-            <groupId>in.nikitapek</groupId>
-            <artifactId>marble</artifactId>
-            <version>1.15.1</version>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-catalina</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
             <version>${tomcat.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- This will be removed soon! -->
         <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-util</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-coyote</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-api</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jdbc</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-dbcp</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-servlet-api</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jsp-api</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jasper</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jasper-el</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-el-api</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-catalina</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-tribes</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-catalina-ha</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-annotations-api</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-juli</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-logging-juli</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-logging-log4j</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>provided</scope>
+            <groupId>in.nikitapek</groupId>
+            <artifactId>marble</artifactId>
+            <version>1.15.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mariadb</groupId>
+                    <artifactId>mariadb</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>com.springsource.org.apache.tomcat.jdbc</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
-    <build>
-        <finalName>insight-web</finalName>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.tomcat.maven</groupId>
-                    <artifactId>tomcat7-maven-plugin</artifactId>
-                    <version>2.3-SNAPSHOT</version>
-                    <executions>
-                        <execution>
-                            <id>tomcat-run</id>
-                            <goals>
-                                <goal>exec-war-only</goal>
-                            </goals>
-                            <phase>package</phase>
-                            <configuration>
-                                <path>/</path>
-                                <enableNaming>true</enableNaming>
-                                <finalName>insight-web.jar</finalName>
-                            </configuration>
-                        </execution>
-                    </executions>
-
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.apache.maven</groupId>
-                            <artifactId>maven-plugin-api</artifactId>
-                            <version>3.1.1</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.maven.plugin-tools</groupId>
-                            <artifactId>maven-plugin-annotations</artifactId>
-                            <version>3.2</version>
-                            <scope>provided</scope>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.codehaus.plexus</groupId>
-                            <artifactId>plexus-utils</artifactId>
-                            <version>3.0.1</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>junit</groupId>
-                            <artifactId>junit</artifactId>
-                            <version>4.11</version>
-                            <scope>test</scope>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.easytesting</groupId>
-                            <artifactId>fest-assert-core</artifactId>
-                            <version>2.0M10</version>
-                            <scope>test</scope>
-                        </dependency>
-                        <dependency>
-                            <groupId>xmlunit</groupId>
-                            <artifactId>xmlunit</artifactId>
-                            <version>1.5</version>
-                            <scope>test</scope>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.mockito</groupId>
-                            <artifactId>mockito-all</artifactId>
-                            <version>1.9.5</version>
-                            <scope>test</scope>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat.embed</groupId>
-                            <artifactId>tomcat-embed-core</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-util</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-coyote</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-api</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-jdbc</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-dbcp</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-servlet-api</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-jsp-api</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-jasper</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-jasper-el</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-el-api</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-catalina</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-tribes</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-catalina-ha</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-annotations-api</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat-juli</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat.embed</groupId>
-                            <artifactId>tomcat-embed-logging-juli</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.tomcat.embed</groupId>
-                            <artifactId>tomcat-embed-logging-log4j</artifactId>
-                            <version>${tomcat.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
-                    </configuration>
-                </plugin>
-                <!-- This is necessary for Maven dependencies to be deployed to Tomcat -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.4</version>
-                    <executions>
-                        <execution>
-                            <phase>process-resources</phase>
-                            <goals>
-                                <goal>copy-dependencies</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/lib/</outputDirectory>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+    <profiles>
+        <profile>
+            <id>standalone</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.tomcat.maven</groupId>
+                        <artifactId>tomcat7-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>tomcat-run</id>
+                                <goals>
+                                    <goal>exec-war-only</goal>
+                                </goals>
+                                <phase>package</phase>
+                                <configuration>
+                                    <path>/</path>
+                                    <enableNaming>false</enableNaming>
+                                    <finalName>insight-web-${version}.jar</finalName>
+                                    <charset>utf-8</charset>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
