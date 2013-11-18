@@ -1,5 +1,7 @@
 <%@tag description="Template" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@attribute name="script" fragment="true" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,6 +60,7 @@
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script src="http://www.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="https://www.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <jsp:invoke fragment="script"/>
     </body>
 </html>
