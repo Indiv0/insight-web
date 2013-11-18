@@ -14,8 +14,20 @@
     <servlet>
         <servlet-name>HomeServlet</servlet-name>
         <display-name>HomeServlet</display-name>
-        <description>Home page for Insight WEb Administration Application</description>
+        <description>Home page for Insight Web Administration Application</description>
         <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <display-name>LoginServlet</display-name>
+        <description>Login page for Insight Web Administration Application</description>
+        <jsp-file>/login.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginFailedServlet</servlet-name>
+        <display-name>LoginFailedServlet</display-name>
+        <description>Login failed page for Insight Web Administration Application</description>
+        <jsp-file>/login-failed.jsp</jsp-file>
     </servlet>
 
     <servlet>
@@ -27,4 +39,30 @@
         <servlet-name>ConnectServlet</servlet-name>
         <url-pattern>/connect</url-pattern>
     </servlet-mapping>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Requires authentication for the entire application</web-resource-name>
+            <url-pattern>/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+
+        <auth-constraint>
+            <role-name>insight-user</role-name>
+        </auth-constraint>
+
+        <user-data-constraint>
+            <!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE -->
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/login-failed.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
 </web-app>
