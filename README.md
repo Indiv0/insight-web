@@ -37,6 +37,10 @@ mvn clean package tomcat7:undeploy tomcat7:deploy
     -Dtomcat.password=PASSWORD
 ```
 
+# SSL Setup
+
+To ensure a secure environment and reduce the risk of a MITM attack, please enable SSL on your server by following [these instructions](http://www.mulesoft.com/tomcat-ssl).
+
 # Common Issues
 
 * If you cannot deploy, ensure you have provided the correct `URL`, `USERNAME`, and `PASSWORD`.
