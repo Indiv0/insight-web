@@ -1,0 +1,10 @@
+<Context antiJARLocking="true" path="/insight-web">
+    <Realm localDataSource="true"
+           dataSourceName="jdbc/insight"
+           className="org.apache.catalina.realm.JDBCRealm"
+           driverName="org.mariadb.jdbc.Driver"
+           connectionURL="jdbc:mysql://[URL]:[Port]/[DatabaseName]"
+           connectionName="[DatabaseUsername]" connectionPassword="[DatabasePassword]"
+           userTable="tomcat_users" userNameCol="user_name" userCredCol="password"
+           userRoleTable="tomcat_users_roles" roleNameCol="role_name" />
+</Context>

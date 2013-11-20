@@ -1,9 +1,7 @@
 package in.nikitapek.insightweb;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,16 +17,8 @@ public class ConnectServlet extends HttpServlet {
     public void init() throws ServletException {
         super.init();
 
-        Context initCtx = null;
-        try {
-            initCtx = new InitialContext();
-
-            Context envCtx = (Context) initCtx.lookup("java:comp/env");
-
-            dataSource = (DataSource) envCtx.lookup("jdbc/insight");
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
+        ServletContext context = getServletContext();
+        //JDBCRealm realm = JDBC.createJDBCRealm();
     }
 
     @Override

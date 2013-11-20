@@ -43,26 +43,19 @@ To ensure a secure environment and reduce the risk of a MITM attack, please enab
 
 # Authentication Setup
 
-## Server.xml
+## Context.xml
 
-Inside your `tomcat/conf/server.xml` file, comment out the UserDatabaseRealm so that it looks like:
-
-```
-<!--
-<Realm className="org.apache.catalina.realm.UserDatabaseRealm"
-       resourceName="UserDatabase"/>
--->
-```
-
-Underneath it, add:
+Modify the following in your `tomcat/webapps/insight-web/META-INF/context.xml`:
 
 ```
-<Realm  className="org.apache.catalina.realm.JDBCRealm"
-        driverName="org.mariadb.jdbc.Driver"
-        connectionURL="jdbc:mysql://[URL]:[Port]/[DatabaseName]"
+<Realm localDataSource="true"
+       dataSourceName="jdbc/insight"
+       className="org.apache.catalina.realm.JDBCRealm"
+       driverName="org.mariadb.jdbc.Driver"
+       connectionURL="jdbc:mysql://[URL]:[Port]/[DatabaseName]"
         connectionName="[DatabaseUsername]" connectionPassword="[DatabasePassword]"
-        userTable="tomcat_users" userNameCol="user_name" userCredCol="password"
-        userRoleTable="tomcat_users_roles" roleNameCol="role_name" />
+       userTable="tomcat_users" userNameCol="user_name" userCredCol="password"
+       userRoleTable="tomcat_users_roles" roleNameCol="role_name" />
 ```
 
 Replace the placeholder values (the values surrounded by square brackets) with your preferred database connection information (ensure you remove the square brackets themselves, those are only meant to help you find the things you need to replace).
@@ -95,7 +88,7 @@ INSERT INTO tomcat_users_roles (user_name, role_name) VALUES ('admin', 'insight-
 COMMIT;
 ```
 
-Again, replace the ```[Placeholders]```.
+Replace the placeholder values (the values surrounded by square brackets) with your preferred database connection information (ensure you remove the square brackets themselves, those are only meant to help you find the things you need to replace).
 
 ## Downloading the Connector
 
