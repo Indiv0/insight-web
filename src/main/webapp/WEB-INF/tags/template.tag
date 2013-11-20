@@ -2,8 +2,6 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@attribute name="script" fragment="true" %>
 
-<% String user = request.getRemoteUser(); %>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,7 +46,7 @@
                         <li><a href="https://github.com/Indiv0/insight-web/">GitHub</a></li>
                         <li><a href="http://dev.bukkit.org/bukkit-plugins/insight/">BukkitDev</a></li>
                         <li><a href="http://reddit.com/r/MinerApocalypse">MinerAp</a></li>
-                        <% if (user != null) { out.write("<li class=\"active\"><a href=\"logout\">Logout</a></li>"); } %>
+                        <% if (request.getRemoteUser() != null) { out.write("<li class=\"active\"><a href=\"logout\">Logout</a></li>"); } %>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

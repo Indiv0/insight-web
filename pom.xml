@@ -82,7 +82,7 @@
         <dependency>
             <groupId>in.nikitapek</groupId>
             <artifactId>marble</artifactId>
-            <version>1.15.0-SNAPSHOT</version>
+            <version>1.15.1</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.mariadb</groupId>
