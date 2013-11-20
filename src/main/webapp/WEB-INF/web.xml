@@ -5,9 +5,11 @@
 <web-app
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     id="Insight_Web"
     version="2.5">
+    <display-name>Insight Web Administration Application</display-name>
 
     <servlet>
         <servlet-name>HomeServlet</servlet-name>
@@ -15,32 +17,39 @@
     </servlet>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
+        <display-name>LoginServlet</display-name>
+        <description>Login page for Insight Web Administration Application</description>
         <jsp-file>/login.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>LoginFailedServlet</servlet-name>
+        <display-name>LoginFailedServlet</display-name>
+        <description>Login failed page for Insight Web Administration Application</description>
         <jsp-file>/login-failed.jsp</jsp-file>
-    </servlet>
-    <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <jsp-file>/logout.jsp</jsp-file>
     </servlet>
 
     <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>in.nikitapek.insightweb.IndexServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ConnectServlet</servlet-name>
-        <servlet-class>in.nikitapek.insightweb.servlet.ConnectServlet</servlet-class>
+        <servlet-class>in.nikitapek.insightweb.ConnectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginFailedServlet</servlet-name>
+        <servlet-class>in.nikitapek.insightweb.LoginFailedServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>in.nikitapek.insightweb.servlet.RegisterServlet</servlet-class>
+        <servlet-class>in.nikitapek.insightweb.RegisterServlet</servlet-class>
     </servlet>
 
-    <servlet>
-        <servlet-name>ConfigureServlet</servlet-name>
-        <servlet-class>in.nikitapek.insightweb.servlet.ConfigureServlet</servlet-class>
-    </servlet>
-
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ConnectServlet</servlet-name>
         <url-pattern>/connect</url-pattern>
@@ -90,8 +99,4 @@
             <form-error-page>/login-failed.jsp</form-error-page>
         </form-login-config>
     </login-config>
-
-    <security-role>
-        <role-name>insight-user</role-name>
-    </security-role>
 </web-app>

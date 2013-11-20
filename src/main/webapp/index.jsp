@@ -2,17 +2,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
-<% request.setAttribute("connected", SQL.isConnected() ? "yes" : "no"); %>
-<%
-    if (SQL.isConnected()) {
-        String connectionInfo = "";
-        connectionInfo += "<p> Username: " + request.getSession().getAttribute("username") + "</p>";
-        connectionInfo += "<p> URL: " + request.getSession().getAttribute("url") + "</p>";
-        connectionInfo += "<p> Port: " + request.getSession().getAttribute("port") + "</p>";
-        request.setAttribute("connectionInfo", connectionInfo);
-    }
-%>
-
 <t:template>
     <jsp:body>
         <!-- Main component for a primary marketing message or call to action -->
