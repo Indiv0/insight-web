@@ -1,26 +1,14 @@
 package in.nikitapek.insightweb;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sql.DataSource;
 import java.io.IOException;
 
 public class ConnectServlet extends HttpServlet {
-    DataSource dataSource;
-
-    @Override
-    public void init() throws ServletException {
-        super.init();
-
-        ServletContext context = getServletContext();
-        //JDBCRealm realm = JDBC.createJDBCRealm();
-    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {

@@ -35,9 +35,19 @@
         <servlet-class>in.nikitapek.insightweb.ConnectServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>in.nikitapek.insightweb.RegisterServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>ConnectServlet</servlet-name>
         <url-pattern>/connect</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
     <security-constraint>
