@@ -71,6 +71,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+
         <!-- This will be removed soon! -->
         <dependency>
             <groupId>in.nikitapek</groupId>
