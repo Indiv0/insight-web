@@ -10,9 +10,8 @@ public class LoginFailedServlet extends HttpServlet {
     private static final String page = "login.jsp";
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String status = "<h1>Login Failed</h1>";
         request.setAttribute("status", status);
 

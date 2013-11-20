@@ -34,7 +34,7 @@
     </servlet>
     <servlet>
         <servlet-name>LoginFailedServlet</servlet-name>
-        <servlet-class>in.nikitapek.insightweb.IndexSLoginFailedServletervlet</servlet-class>
+        <servlet-class>in.nikitapek.insightweb.LoginFailedServlet</servlet-class>
     </servlet>
 
     <servlet>
