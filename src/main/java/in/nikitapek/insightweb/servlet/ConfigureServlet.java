@@ -16,10 +16,15 @@ public class ConfigureServlet extends HttpServlet {
     private static final String page = "configure.jsp";
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        req.getRequestDispatcher(page).forward(req, resp);
+        request.setAttribute("dbUsername", Configuration.getProperty("dbUsername"));
+        request.setAttribute("dbURL", Configuration.getProperty("dbURL"));
+        request.setAttribute("dbPort", Configuration.getProperty("dbPort"));
+        request.setAttribute("dbName", Configuration.getProperty("dbName"));
+
+        request.getRequestDispatcher(page).forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,8 +34,9 @@ public class ConfigureServlet extends HttpServlet {
         String password = request.getParameter("password");
         String url = request.getParameter("url");
         String port = request.getParameter("port");
+        String name = request.getParameter("name");
 
-        if (url == null || port == null || username == null || password == null) {
+        if (url == null || port == null || username == null || password == null || name == null) {
             request.setAttribute("problem", "Values cannot be null.");
 
             dispatch = request.getRequestDispatcher(page);
@@ -52,7 +58,7 @@ public class ConfigureServlet extends HttpServlet {
 
             // Test the connection with the new options.
             JDBCRealm testRealm = new JDBCRealm();
-            JDBC.configureRealm(new JDBCRealm(), username, password, url, port);
+            JDBC.configureRealm(new JDBCRealm(), username, password, url, port, name);
             if (testRealm.getUserTable() == null) {
                 request.setAttribute("problem", "Failed to connect to your server.");
                 dispatch = request.getRequestDispatcher(page);
@@ -60,8 +66,8 @@ public class ConfigureServlet extends HttpServlet {
                 return;
             }
 
-            JDBC.configureRealm(JDBC.realm, username, password, url, port);
-            Configuration.setDatabaseProperties("insight", username, password, url, port);
+            JDBC.configureRealm(JDBC.realm, username, password, url, port, name);
+            Configuration.setDatabaseProperties(username, password, url, port, name);
 
             dispatch = request.getRequestDispatcher("index.jsp");
             dispatch.forward(request, response);

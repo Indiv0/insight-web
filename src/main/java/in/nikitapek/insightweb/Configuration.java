@@ -27,22 +27,19 @@ public class Configuration {
     private Configuration() {}
 
     public static void initialize() {
-        System.out.println("1");
         if (properties != null) {
             return;
         }
 
-        System.out.println("Initializing properties");
         try {
-            System.out.println("Loading properties");
+            System.out.println("[insight-web] Loading properties.");
             properties = loadProperties();
             return;
         } catch (IOException e) {
-            System.out.println("Error loading properties");
-            e.printStackTrace();
+            System.out.println("[insight-web] Error loading properties");
         }
 
-        System.out.println("Saving default properties");
+        System.out.println("[insight-web] Saving default properties");
         properties = saveDefaultProperties();
     }
 
@@ -50,12 +47,12 @@ public class Configuration {
         return properties.getProperty(key);
     }
 
-    public static void setDatabaseProperties(String databaseName, String username, String password, String url, String port) {
-        properties.setProperty("dbName", databaseName);
+    public static void setDatabaseProperties(String username, String password, String url, String port, String databaseName) {
         properties.setProperty("dbUsername", username);
         properties.setProperty("dbPassword", password);
         properties.setProperty("dbUrl", url);
         properties.setProperty("dbPort", port);
+        properties.setProperty("dbName", databaseName);
         saveProperties(properties);
     }
 

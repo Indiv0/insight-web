@@ -1,4 +1,6 @@
-package in.nikitapek.insightweb;
+package in.nikitapek.insightweb.servlet;
+
+import in.nikitapek.insightweb.SQL;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

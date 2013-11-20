@@ -2,16 +2,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
-<%
-    if ("true".equals(request.getAttribute("valid"))) {
-        String registrationInfo = "";
-        registrationInfo += "<h1>Registration Successful!</h1>";
-        registrationInfo += "<p>" + request.getAttribute("username") + " was successfully registered.</p>";
-        request.setAttribute("registrationInfo", registrationInfo);
-    }
-    request.setAttribute("valid", null);
-%>
-
 <t:template>
     <jsp:body>
         <form method="POST" class="form-signin" action="register">

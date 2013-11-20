@@ -11,11 +11,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class ConnectServlet extends HttpServlet {
+    private static final String page = "connect.jsp";
+
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        req.getRequestDispatcher("connect.jsp").forward(req, resp);
+        request.getRequestDispatcher(page).forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,12 +31,12 @@ public class ConnectServlet extends HttpServlet {
         if (url.equals("URL") || port.equals("Port") || username.equals("Username") || password.equals("Password")){
             request.setAttribute("problem", "Please fill all fields");
 
-            dispatch = request.getRequestDispatcher("connect.jsp");
+            dispatch = request.getRequestDispatcher(page);
             dispatch.forward(request, response);
         } else if (url == null || port == null || username == null || password == null) {
             request.setAttribute("problem", "Values cannot be null.");
 
-            dispatch = request.getRequestDispatcher("connect.jsp");
+            dispatch = request.getRequestDispatcher(page);
             dispatch.forward(request, response);
         }
         else {
@@ -47,7 +49,7 @@ public class ConnectServlet extends HttpServlet {
             } catch (NumberFormatException ex) {
                 request.setAttribute("problem", "Please enter a valid number for the port");
 
-                dispatch = request.getRequestDispatcher("connect.jsp");
+                dispatch = request.getRequestDispatcher(page);
                 dispatch.forward(request, response);
             }
 
@@ -63,7 +65,7 @@ public class ConnectServlet extends HttpServlet {
                 dispatch.forward(request, response);
             } else{
                 request.setAttribute("problem", "Failed to connect to your server.");
-                dispatch = request.getRequestDispatcher("connect.jsp");
+                dispatch = request.getRequestDispatcher(page);
                 dispatch.forward(request, response);
             }
         }

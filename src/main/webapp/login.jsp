@@ -2,12 +2,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
-<%
-    System.out.println("2");
-    Configuration.initialize();
-    System.out.println("3");
-%>
-
 <t:template>
     <jsp:attribute name="script">
         <script src="https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>

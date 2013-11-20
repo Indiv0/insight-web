@@ -14,20 +14,21 @@ public class RegisterServlet extends HttpServlet {
     private static final String page = "register.jsp";
 
     @Override
-    public void init() throws ServletException {
-        super.init();
-
-        JDBC.initialize(getServletContext());
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        req.getRequestDispatcher(page).forward(req, resp);
+        request.getRequestDispatcher(page).forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if ("true".equals(request.getAttribute("valid"))) {
+            String registrationInfo = "";
+            registrationInfo += "<h1>Registration Successful!</h1>";
+            registrationInfo += "<p>" + request.getAttribute("username") + " was successfully registered.</p>";
+            request.setAttribute("registrationInfo", registrationInfo);
+        }
+        request.setAttribute("valid", null);
+
         RequestDispatcher dispatch = null;
         HttpSession curr = request.getSession();
         String username = request.getParameter("username");
