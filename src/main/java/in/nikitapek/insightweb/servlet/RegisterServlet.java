@@ -1,4 +1,6 @@
-package in.nikitapek.insightweb;
+package in.nikitapek.insightweb.servlet;
+
+import in.nikitapek.insightweb.JDBC;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +24,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        req.getRequestDispatcher("register.jsp").forward(req, resp);
+        req.getRequestDispatcher(page).forward(req, resp);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

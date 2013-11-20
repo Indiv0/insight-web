@@ -52,4 +52,11 @@ public class JDBC {
 
         return null;
     }
+
+    public static void configureRealm(JDBCRealm realm, String username, String password, String url, String port) {
+        realm.setConnectionName(username);
+        realm.setConnectionPassword(password);
+        realm.setConnectionURL("jdbc:mysql://"+ url + ":" + port + "/insight");
+        realm.setDriverName("org.mariadb.jdbc.Driver");
+    }
 }

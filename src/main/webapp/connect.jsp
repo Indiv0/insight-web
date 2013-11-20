@@ -15,5 +15,6 @@
             </label>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Connect</button>
         </form>
+        ${problem}
     </jsp:body>
 </t:template>
