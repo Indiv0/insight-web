@@ -1,8 +1,6 @@
 package in.nikitapek.insightweb.servlet;
 
 import in.nikitapek.insightweb.Configuration;
-import in.nikitapek.insightweb.JDBC;
-import org.apache.catalina.realm.JDBCRealm;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -57,17 +55,20 @@ public class ConfigureServlet extends HttpServlet {
             }
 
             // Test the connection with the new options.
-            JDBCRealm testRealm = new JDBCRealm();
-            JDBC.configureRealm(new JDBCRealm(), username, password, url, port, name);
+            //JDBCRealm testRealm = new JDBCRealm();
+            //JDBC.configureRealm(new JDBCRealm(), username, password, url, port, name);
+            /*
             if (testRealm.getUserTable() == null) {
                 request.setAttribute("problem", "Failed to connect to your server.");
                 dispatch = request.getRequestDispatcher(page);
                 dispatch.forward(request, response);
                 return;
             }
+            */
 
-            JDBC.configureRealm(JDBC.realm, username, password, url, port, name);
-            Configuration.setDatabaseProperties(username, password, url, port, name);
+            // TODO: Fix this
+            //JDBC.configureRealm(JDBC.realm, username, password, url, port, name);
+            //Configuration.setDatabaseProperties(username, password, url, port, name);
 
             dispatch = request.getRequestDispatcher("index.jsp");
             dispatch.forward(request, response);

@@ -14,6 +14,11 @@
             <input type="password" class="form-control" name="j_password" placeholder="Password" required>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Connect</button>
         </form>
-        ${status}
+        <p>${status}</p>
+        <p>${admin}</p>
+        <p>${table}</p>
+        <p>${auth}</p>
+        <p>${name}</p>
+        <p>${role}</p>
     </jsp:body>
 </t:template>

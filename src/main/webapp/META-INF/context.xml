@@ -1,5 +1,5 @@
 <Context antiJARLocking="true" path="/insight-web">
-    <Realm className="org.apache.catalina.realm.JDBCRealm"
+    <Realm className="in.nikitapek.insightjdbc.InsightRealm"
            driverName="org.mariadb.jdbc.Driver"
            connectionURL="jdbc:mysql://localhost:3306/insight"
            connectionName="username" connectionPassword="password"

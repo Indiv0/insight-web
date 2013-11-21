@@ -1,6 +1,6 @@
 package in.nikitapek.insightweb.servlet;
 
-import in.nikitapek.insightweb.JDBC;
+import in.nikitapek.insightjdbc.InsightRealm;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
 
             dispatch = request.getRequestDispatcher(page);
             dispatch.forward(request, response);
-        } else if (JDBC.userExists(username)) {
+        } else if (InsightRealm.realm.userExists(username)) {
             request.setAttribute("problem", "Username already taken.");
 
             dispatch = request.getRequestDispatcher(page);
