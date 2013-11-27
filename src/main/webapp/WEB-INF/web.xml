@@ -41,7 +41,7 @@
 
     <servlet-mapping>
         <servlet-name>IndexServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/index</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ConfigureServlet</servlet-name>
@@ -102,4 +102,8 @@
             <form-error-page>/login-failed</form-error-page>
         </form-login-config>
     </login-config>
+
+    <welcome-file-list>
+        <welcome-file>index</welcome-file>
+    </welcome-file-list>
 </web-app>
