@@ -1,4 +1,5 @@
 <%@tag description="Template" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@attribute name="script" fragment="true" %>
 
@@ -46,7 +47,9 @@
                         <li><a href="https://github.com/Indiv0/insight-web/">GitHub</a></li>
                         <li><a href="http://dev.bukkit.org/bukkit-plugins/insight/">BukkitDev</a></li>
                         <li><a href="http://reddit.com/r/MinerApocalypse">MinerAp</a></li>
-                        <% if (request.getRemoteUser() != null) { out.write("<li class=\"active\"><a href=\"logout\">Logout</a></li>"); } %>
+                        <c:if test="${not empty pageContext.request.remoteUser}">
+                            <li class="active"><a href="logout">Logout</a></li>
+                        </c:if>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
