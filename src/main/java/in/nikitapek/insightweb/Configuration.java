@@ -1,35 +1,25 @@
 package in.nikitapek.insightweb;
 
-import org.javatuples.Pair;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 
 public class Configuration {
-    private static Set<Pair<String, String>> defaultProperties = new HashSet<>();
-    private static String fileLocation = getFileLocation();
+    private static Map<String, String> defaultProperties = new HashMap<>();
 
     static {
-        defaultProperties.add(new Pair("dbName", "insight"));
-        defaultProperties.add(new Pair("dbUsername", "insightuser"));
-        defaultProperties.add(new Pair("dbPassword", "insight"));
-        defaultProperties.add(new Pair("dbURL", "localhost"));
-        defaultProperties.add(new Pair("dbPort", "3306"));
+        defaultProperties.put("someConfigKey", "aValue");
     }
 
-    private static Properties properties = null;
+    private String fileLocation;
+    private Properties properties = null;
 
-    private Configuration() {}
-
-    public static void initialize() {
-        if (properties != null) {
-            return;
-        }
+    public Configuration(String configurationFileLocation) {
+        fileLocation = getFileLocation(configurationFileLocation);
 
         try {
             System.out.println("[insight-web] Loading properties.");
@@ -43,20 +33,16 @@ public class Configuration {
         properties = saveDefaultProperties();
     }
 
-    public static String getProperty(String key) {
+    public String getProperty(String key) {
         return properties.getProperty(key);
     }
 
-    public static void setDatabaseProperties(String username, String password, String url, String port, String databaseName) {
-        properties.setProperty("dbUsername", username);
-        properties.setProperty("dbPassword", password);
-        properties.setProperty("dbUrl", url);
-        properties.setProperty("dbPort", port);
-        properties.setProperty("dbName", databaseName);
+    public void setProperty(String key, String value) {
+        properties.setProperty(key, value);
         saveProperties(properties);
     }
 
-    private static Properties loadProperties() throws IOException {
+    private Properties loadProperties() throws IOException {
         FileInputStream propFile = new FileInputStream(fileLocation);
 
         Properties p = new Properties();
@@ -65,11 +51,11 @@ public class Configuration {
         return p;
     }
 
-    private static Properties saveDefaultProperties() {
+    private Properties saveDefaultProperties() {
         Properties properties = new Properties();
 
-        for (Pair<String, String> pair : defaultProperties) {
-            properties.setProperty(pair.getValue0(), pair.getValue1());
+        for (Map.Entry<String, String> entry : defaultProperties.entrySet()) {
+            properties.setProperty(entry.getKey(), entry.getValue());
         }
 
         saveProperties(properties);
@@ -77,7 +63,7 @@ public class Configuration {
         return properties;
     }
 
-    private static void saveProperties(Properties properties) {
+    private void saveProperties(Properties properties) {
         try {
             properties.store(new FileOutputStream(fileLocation), null);
         } catch (IOException ex) {
@@ -85,9 +71,8 @@ public class Configuration {
         }
     }
 
-    private static String getFileLocation() {
+    private static String getFileLocation(String fileLocation) {
         String confDir = System.getProperty("insightweb.confdir", null);
-        String fileLocation = "insightweb.properties";
 
         if (confDir != null) {
             File file1 = new File(confDir);

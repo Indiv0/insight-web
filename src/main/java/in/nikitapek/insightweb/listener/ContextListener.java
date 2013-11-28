@@ -1,6 +1,6 @@
 package in.nikitapek.insightweb.listener;
 
-import in.nikitapek.insightweb.Configuration;
+import in.nikitapek.insightweb.util.Util;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -10,8 +10,8 @@ import javax.servlet.annotation.WebListener;
 public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent event) {
-        System.out.println("[insight-web] Loading configuration values.");
-        Configuration.initialize();
+        System.out.println("[insight-web] Initializing.");
+        Util.initialize();
     }
 
     @Override

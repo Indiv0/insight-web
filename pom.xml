@@ -69,6 +69,7 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -90,23 +91,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-        </dependency>
-
-        <!-- This will be removed soon! -->
-        <dependency>
-            <groupId>in.nikitapek</groupId>
-            <artifactId>marble</artifactId>
-            <version>1.15.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.mariadb</groupId>
-                    <artifactId>mariadb</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.tomcat</groupId>
-                    <artifactId>com.springsource.org.apache.tomcat.jdbc</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 
@@ -133,6 +117,20 @@
                                     <groupId>org.mariadb.jdbc</groupId>
                                     <artifactId>mariadb-java-client</artifactId>
                                     <version>1.1.5</version>
+                                </extraDependency>
+                                <extraDependency>
+                                    <groupId>com.zaxxer</groupId>
+                                    <artifactId>HikariCP</artifactId>
+                                </extraDependency>
+                                <extraDependency>
+                                    <groupId>org.slf4j</groupId>
+                                    <artifactId>slf4j-api</artifactId>
+                                    <version>1.7.5</version>
+                                </extraDependency>
+                                <extraDependency>
+                                    <groupId>org.javassist</groupId>
+                                    <artifactId>javassist</artifactId>
+                                    <version>3.18.1-GA</version>
                                 </extraDependency>
                             </extraDependencies>
                         </configuration>

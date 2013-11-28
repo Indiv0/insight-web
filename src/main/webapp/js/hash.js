@@ -1,4 +1,4 @@
-function hashPassword() {
-    var hash = CryptoJS.MD5(document.forms["login"]["j_password"].value).toString();
-    document.forms["login"]["j_password"].value = hash;
+function hashPassword(formName, fieldName) {
+    var hash = CryptoJS.MD5(document.forms[formName][fieldName].value).toString();
+    document.forms[formName][fieldName].value = hash;
 }

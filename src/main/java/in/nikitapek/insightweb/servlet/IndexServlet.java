@@ -1,6 +1,6 @@
 package in.nikitapek.insightweb.servlet;
 
-import in.nikitapek.insightweb.SQL;
+import in.nikitapek.insightweb.util.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,9 +15,9 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setAttribute("connected", SQL.isConnected() ? "yes" : "no");
+        request.setAttribute("connected", Util.insightConnection.isConnected() ? "yes" : "no");
 
-        if (SQL.isConnected()) {
+        if (Util.insightConnection.isConnected()) {
             String connectionInfo = "";
             connectionInfo += "<p> Username: " + request.getSession().getAttribute("username") + "</p>";
             connectionInfo += "<p> URL: " + request.getSession().getAttribute("url") + "</p>";

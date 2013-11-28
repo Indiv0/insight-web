@@ -1,6 +1,6 @@
 package in.nikitapek.insightweb.servlet;
 
-import in.nikitapek.insightweb.SQL;
+import in.nikitapek.insightweb.util.Util;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,9 +53,7 @@ public class ConnectServlet extends HttpServlet {
                 dispatch.forward(request, response);
             }
 
-            SQL.initializeSQL(url, username, password, port);
-
-            if(SQL.isConnected()){
+            if(Util.insightConnection.isConnected()){
                 curr.setAttribute("url", url);
                 curr.setAttribute("username", username);
                 curr.setAttribute("password", password);
