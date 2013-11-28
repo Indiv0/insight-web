@@ -1,5 +1,6 @@
 <%@page import="in.nikitapek.insightweb.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
 <t:template>
@@ -14,5 +15,10 @@
             <input type="password" class="form-control" name="j_password" placeholder="Password" required>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Connect</button>
         </form>
+        <c:if test="${not empty status}">
+            <c:if test="${status == 0}">
+                <p>Login Failed.</p>
+            </c:if>
+        </c:if>
     </jsp:body>
 </t:template>

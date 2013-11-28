@@ -12,9 +12,7 @@ public class LoginFailedServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String status = "<h1>Login Failed</h1>";
-        request.setAttribute("status", status);
-
+        request.setAttribute("status", 0);
         request.getRequestDispatcher(page).forward(request, response);
     }
 }
