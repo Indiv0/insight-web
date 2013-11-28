@@ -2,6 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@attribute name="script" fragment="true" %>
+<%@attribute name="css" fragment="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,6 +12,7 @@
           Insight | Web Administration
         </jsp:attribute>
     </t:header>
+    <jsp:invoke fragment="css"/>
     </head>
     <body>
         <!-- Static navbar -->

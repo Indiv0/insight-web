@@ -10,17 +10,16 @@
     </jsp:attribute>
     <jsp:body>
         <c:choose>
-            <c:when test="${not empty registrationInfo}">
-                ${registrationInfo}
+            <c:when test="${not empty status}">
+                ${status}
 
                 <br/><br/>
-                <a class="btn btn-lg btn-primary" href="register" role="button">Return</a>
+                <a class="btn btn-lg btn-primary" href="delete-user" role="button">Return</a>
             </c:when>
             <c:otherwise>
-                <form method="POST" class="form-signin" action="register" onsubmit="hashPassword('register', 'password');" name="register">
+                <form method="POST" class="form-signin" action="delete-user" name="delete-user">
                     <h2 class="form-signin-heading">Register a New Administrator</h2>
                     <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Connect</button>
                 </form>
             </c:otherwise>
