@@ -12,10 +12,6 @@ public class ContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent event) {
         System.out.println("[insight-web] Loading configuration values.");
         Configuration.initialize();
-        System.out.println("[insight-web] Retrieving authorization realm.");
-        //JDBC.initialize(event.getServletContext());
-        //System.out.println("[insight-web] Modifying authorization realm to use provided configuration values.");
-        //JDBC.configureRealm(JDBC.realm, Configuration.getProperty("dbUsername"), Configuration.getProperty("dbPassword"), Configuration.getProperty("dbURL"), Configuration.getProperty("dbPort"), Configuration.getProperty("dbName"));
     }
 
     @Override
