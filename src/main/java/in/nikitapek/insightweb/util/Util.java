@@ -4,18 +4,21 @@ import in.nikitapek.insightjdbc.RealmProperties;
 import in.nikitapek.insightweb.Configuration;
 import in.nikitapek.insightweb.SQLConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Map;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Util {
     private static final String ADD_USER_QUERY = "INSERT INTO `tomcat_users` (`user_name`, `password`) VALUES (?, ?);";
+    private static final String ADD_ROLE_QUERY = "INSERT INTO `tomcat_roles` (`role_name`) VALUES (?);";
+    private static final String REMOVE_USER_QUERY = "DELETE FROM `tomcat_users` WHERE `user_name` = ?;";
+    private static final String REMOVE_USER_ROLES_QUERY = "DELETE FROM `tomcat_users_roles` WHERE `user_name` = ?;";
+    private static final String REMOVE_ROLE_QUERY = "DELETE FROM `tomcat_roles` WHERE `role_name` = ?;";
     private static final String ADD_USER_ROLE_QUERY = "INSERT INTO `tomcat_users_roles` (`user_name`, `role_name`) VALUES (?, ?);";
     private static final String GET_USERS_QUERY = "SELECT * FROM `tomcat_users_roles`";
+    private static final String GET_ROLES_QUERY = "SELECT * FROM `tomcat_roles`";
 
     private Util() {}
 
@@ -26,8 +29,13 @@ public class Util {
     public static void initialize() {
     }
 
-    public static boolean addUser(String username, String password)
+    public static boolean addUser(String username, String password, String rolename)
     {
+        // If a rolename hasn't been provided, we default to 'insight-user'.
+        if ("".equals(rolename)) {
+            rolename = "insight-user";
+        }
+
         int status = 0;
         Connection connection = authConnection.getConnection();
 
@@ -39,17 +47,84 @@ public class Util {
 
             preparedStatement = connection.prepareStatement(ADD_USER_ROLE_QUERY);
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, "insight-user");
+            preparedStatement.setString(2, rolename);
             status = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("[insight-web] Failed to register user with credentials: '" + username + "', '" + password + "'");
+            System.out.println("[insight-web] Failed to register user with credentials: '" + username + "', '" + password + "', '" + rolename + "'");
             return false;
         } finally {
             authConnection.disconnect(connection);
         }
 
         // If the number of affected rows was greater than zero, then the user was successfully registered.
+        return status >= 0;
+    }
+
+    public static boolean addRole(String rolename)
+    {
+        int status = 0;
+        Connection connection = authConnection.getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(ADD_ROLE_QUERY);
+            preparedStatement.setString(1, rolename);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("[insight-web] Failed to add role: '" + rolename + "'");
+            return false;
+        } finally {
+            authConnection.disconnect(connection);
+        }
+
+        // If the number of affected rows was greater than zero, then the role was successfully added.
+        return status >= 0;
+    }
+
+    public static boolean removeUser(String username)
+    {
+        int status = 0;
+        Connection connection = authConnection.getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(REMOVE_USER_ROLES_QUERY);
+            preparedStatement.setString(1, username);
+            preparedStatement.executeUpdate();
+
+            preparedStatement = connection.prepareStatement(REMOVE_USER_QUERY);
+            preparedStatement.setString(1, username);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("[insight-web] Failed to remove user '" + username + "'");
+            return false;
+        } finally {
+            authConnection.disconnect(connection);
+        }
+
+        // If the number of affected rows was greater than zero, then the user was successfully removed.
+        return status >= 0;
+    }
+
+    public static boolean removeRole(String rolename)
+    {
+        int status = 0;
+        Connection connection = authConnection.getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(REMOVE_ROLE_QUERY);
+            preparedStatement.setString(1, rolename);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("[insight-web] Failed to remove role '" + rolename + "'");
+            return false;
+        } finally {
+            authConnection.disconnect(connection);
+        }
+
+        // If the number of affected rows was greater than zero, then the role was successfully removed.
         return status >= 0;
     }
 
@@ -61,7 +136,7 @@ public class Util {
         try {
             Statement getUsersStatement = connection.createStatement();
             ResultSet resultSet = getUsersStatement.executeQuery(GET_USERS_QUERY);
-            
+
             while (resultSet.next()) {
                 users.put(resultSet.getString("user_name"), resultSet.getString("role_name"));
             }
@@ -74,5 +149,28 @@ public class Util {
         }
 
         return users;
+    }
+
+    public static List<String> getRoles()
+    {
+        List<String> roles = new ArrayList<>();
+        Connection connection = authConnection.getConnection();
+
+        try {
+            Statement getRolesStatement = connection.createStatement();
+            ResultSet resultSet = getRolesStatement.executeQuery(GET_ROLES_QUERY);
+
+            while (resultSet.next()) {
+                roles.add(resultSet.getString("role_name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("[insight-web] Failed to retrieve roles.");
+            return null;
+        } finally {
+            authConnection.disconnect(connection);
+        }
+
+        return roles;
     }
 }

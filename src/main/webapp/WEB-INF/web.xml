@@ -35,8 +35,8 @@
         <servlet-class>in.nikitapek.insightweb.servlet.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>in.nikitapek.insightweb.servlet.RegisterServlet</servlet-class>
+        <servlet-name>UsersServlet</servlet-name>
+        <servlet-class>in.nikitapek.insightweb.servlet.UsersServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -60,8 +60,8 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
+        <servlet-name>UsersServlet</servlet-name>
+        <url-pattern>/users</url-pattern>
     </servlet-mapping>
 
     <security-role>
