@@ -9,6 +9,32 @@
         <script src="public/js/hash.js"></script>
     </jsp:attribute>
     <jsp:body>
+        <h1>User Administration</h1>
+        <c:choose>
+            <c:when test="${not empty users}">
+                <c:set var="count" value="0" scope="page" />
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Username</th>
+                            <th>Rolename</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${users}" var="element">
+                            <c:set var="count" value="${count + 1}" scope="page"/>
+                            <tr>
+                                <th>${count}</th>
+                                <td>${element.getKey()}</td>
+                                <td>${element.getValue()}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </c:when>
+        </c:choose>
+
         <c:choose>
             <c:when test="${not empty registrationInfo}">
                 ${registrationInfo}
