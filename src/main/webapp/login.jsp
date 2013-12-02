@@ -6,7 +6,7 @@
 <t:template>
     <jsp:attribute name="script">
         <script src="https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
-        <script src="js/hash.js"></script>
+        <script src="public/js/hash.js"></script>
     </jsp:attribute>
     <jsp:body>
         <form method="POST" class="form-signin" action="j_security_check" onsubmit="hashPassword('login', 'j_password');" name="login">
