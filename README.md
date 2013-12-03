@@ -17,7 +17,7 @@ The administration web-interface for the Insight plugin.
 * Create the standalone .jar file:
 
 ```
-mvn clean package -P standalone
+mvn -P standalone clean compile package
 ```
 
 * Execute the server:
@@ -31,76 +31,55 @@ java -jar target/insight-web-1.0.0.jar
 * Deploy to your Tomcat server:
 
 ```
-mvn clean package tomcat7:undeploy tomcat7:deploy
+mvn clean compile package tomcat7:undeploy tomcat7:deploy
     -Dtomcat.url=URL
     -Dtomcat.username=USERNAME
     -Dtomcat.password=PASSWORD
 ```
 
+### Downloading the Connector
+
+[Download](https://downloads.mariadb.org/client-java/1.1.5/) the MariaDB connector jar and add it to your ```tomcat/lib/``` directory.
+
 # SSL Setup
 
 To ensure a secure environment and reduce the risk of a MITM attack, please enable SSL on your server by following [these instructions](http://www.mulesoft.com/tomcat-ssl).
 
-# Authentication Setup
+# Server Setup
 
-## Context.xml
-
-Modify the following in your `tomcat/webapps/insight-web/META-INF/context.xml`:
+* Create the database on your sql server:
 
 ```
-<Realm localDataSource="true"
-       dataSourceName="jdbc/insight"
-       className="org.apache.catalina.realm.JDBCRealm"
-       driverName="org.mariadb.jdbc.Driver"
-       connectionURL="jdbc:mysql://[URL]:[Port]/[DatabaseName]"
-        connectionName="[DatabaseUsername]" connectionPassword="[DatabasePassword]"
-       userTable="tomcat_users" userNameCol="user_name" userCredCol="password"
-       userRoleTable="tomcat_users_roles" roleNameCol="role_name" />
+CREATE DATABASE insight;
 ```
 
-Replace the placeholder values (the values surrounded by square brackets) with your preferred database connection information (ensure you remove the square brackets themselves, those are only meant to help you find the things you need to replace).
+* Run the server at least one to create the property files (`insightweb-auth.properties`, `insightweb-main.properties`, `insightweb.properties`).
 
-## Creating the Table
+* Replace the placeholder values.
 
-For the same database as you provided above, run the following SQL query:
+  * In `insightweb.properties`, modify any needed configuration parameters.
 
-```
-DROP DATABASE IF EXISTS [DatabaseName];
-CREATE DATABASE [DatabaseName];
-USE [DatabaseName];
-CREATE TABLE tomcat_users (
-    user_name varchar(20) NOT NULL PRIMARY KEY,
-    password varchar(32) NOT NULL
-);
-CREATE TABLE tomcat_roles (
-    role_name varchar(20) NOT NULL PRIMARY KEY
-);
-CREATE TABLE tomcat_users_roles (
-    user_name varchar(20) NOT NULL,
-    role_name varchar(20) NOT NULL,
-    PRIMARY KEY (user_name, role_name),
-    CONSTRAINT tomcat_users_roles_foreign_key_1 FOREIGN KEY (user_name) REFERENCES tomcat_users (user_name),
-    CONSTRAINT tomcat_users_roles_foreign_key_2 FOREIGN KEY (role_name) REFERENCES tomcat_roles (role_name)
-);
-INSERT INTO tomcat_users (user_name, password) VALUES ('admin', '21232f297a57a5a743894a0e4a801fc3');
-INSERT INTO tomcat_roles (role_name) VALUES ('insight-user');
-INSERT INTO tomcat_users_roles (user_name, role_name) VALUES ('admin', 'insight-user');
-COMMIT;
-```
+  * In `insightweb-main.properties` replace the placeholder values with the connection information for your Insight logging server.
 
-Replace the placeholder values (the values surrounded by square brackets) with your preferred database connection information (ensure you remove the square brackets themselves, those are only meant to help you find the things you need to replace).
+  * In `insightweb-auth.properties` replace the placeholder values with the connection information for your insight-web authentication server.
 
-## Downloading the Connector
+* Run the server again and if it manages to connect to your provided authentication database, it will automatically create the needed authentication tables and fill them with default data.
 
-[Download](https://downloads.mariadb.org/client-java/1.1.5/) the MariaDB connector jar and add it to your ```tomcat/lib/``` directory.
+# Logging In
+
+If you have correctly setup the [authentication](https://github.com/Indiv0/insight-web#server-setup), then use the default credentials:
+
+username: `admin`
+password: `admin`
+
+Or:
+
+username: `user`
+password: `admin`
+
 
 # Common Issues
 
 * If you cannot deploy, ensure you have provided the correct `URL`, `USERNAME`, and `PASSWORD`.
 * If you are getting authorization errors when deploying (e.g. HTTP 401 or 403), then ensure the user you are using to deploy has the `manager-script` role.
 
-# FAQ
-
-## How do I login?
-
-If you have correctly setup the [authentication](https://github.com/Indiv0/insight-web#authentication-setup), then use the default credentials, username: ```admin```, password: ```admin```.
