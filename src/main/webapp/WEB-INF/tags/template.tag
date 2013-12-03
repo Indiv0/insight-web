@@ -35,7 +35,7 @@
                             <c:if test="${not empty pageContext.request.remoteUser}">
                                 <li><a href="connect">Connect</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Action <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="settings">Change Settings</a></li>
                                         <li><a href="query">Query</a></li>
