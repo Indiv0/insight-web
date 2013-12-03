@@ -31,7 +31,7 @@ public class ConnectServlet extends HttpServlet {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException ex) {
-            request.setAttribute("problem", "Please enter a valid number for the port");
+            request.setAttribute("problem", "<div class=\"alert alert-danger\">Please enter a valid number for the port.</div>");
 
             request.getRequestDispatcher(page).forward(request, response);
             return;
@@ -42,7 +42,7 @@ public class ConnectServlet extends HttpServlet {
         if(Util.insightConnection.isConnected()){
             response.sendRedirect("index");
         } else{
-            request.setAttribute("problem", "Failed to connect to your server.");
+            request.setAttribute("problem", "<div class=\"alert alert-danger\">Failed to connect to your server.</div>");
             request.getRequestDispatcher(page).forward(request, response);
         }
     }
