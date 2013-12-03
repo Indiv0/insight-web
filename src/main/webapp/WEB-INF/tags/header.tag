@@ -9,3 +9,4 @@
 <link rel="stylesheet" href="https://getbootstrap.com/examples/signin/signin.css">
 <link rel="stylesheet" href="http://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-navbar.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="public/css/custom.css">

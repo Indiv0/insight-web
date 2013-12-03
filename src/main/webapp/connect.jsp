@@ -5,6 +5,9 @@
 <t:template>
     <jsp:body>
         ${problem}
+        <div class="page-header">
+            <h1>Connect to Insight</h1>
+        </div>
         <form method="POST" class="form-horizontal" action="connect">
             <div class="form-group">
                 <label for="inputUsername1" class="col-sm-2 control-label">Username</label>
