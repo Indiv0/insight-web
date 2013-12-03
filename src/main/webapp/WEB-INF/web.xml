@@ -38,6 +38,10 @@
         <servlet-name>UsersServlet</servlet-name>
         <servlet-class>in.nikitapek.insightweb.servlet.UsersServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SettingsServlet</servlet-name>
+        <servlet-class>in.nikitapek.insightweb.servlet.SettingsServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>IndexServlet</servlet-name>
@@ -62,6 +66,10 @@
     <servlet-mapping>
         <servlet-name>UsersServlet</servlet-name>
         <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SettingsServlet</servlet-name>
+        <url-pattern>/settings</url-pattern>
     </servlet-mapping>
 
     <security-role>

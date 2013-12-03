@@ -71,7 +71,7 @@ public class UsersServlet extends HttpServlet {
     private static void deleteUserForm(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter("username");
 
-        if (username == null ) {
+        if (username == null) {
             return;
         }
 
@@ -111,7 +111,7 @@ public class UsersServlet extends HttpServlet {
     private static void deleteRoleForm(HttpServletRequest request, HttpServletResponse response) {
         String rolename = request.getParameter("rolename");
 
-        if (rolename == null ) {
+        if (rolename == null) {
             return;
         }
 

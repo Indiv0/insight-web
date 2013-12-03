@@ -19,6 +19,7 @@ public class Util {
     private static final String ADD_USER_ROLE_QUERY = "INSERT INTO `tomcat_users_roles` (`user_name`, `role_name`) VALUES (?, ?);";
     private static final String GET_USERS_QUERY = "SELECT * FROM `tomcat_users_roles`";
     private static final String GET_ROLES_QUERY = "SELECT * FROM `tomcat_roles`";
+    private static final String CHANGE_PASSWORD_QUERY = "UPDATE `tomcat_users` SET `password`=? WHERE `user_name`=?;";
 
     private Util() {}
 
@@ -125,6 +126,28 @@ public class Util {
         }
 
         // If the number of affected rows was greater than zero, then the role was successfully removed.
+        return status >= 0;
+    }
+
+    public static boolean changePassword(String username, String password)
+    {
+        int status = 0;
+        Connection connection = authConnection.getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(CHANGE_PASSWORD_QUERY);
+            preparedStatement.setString(1, password);
+            preparedStatement.setString(2, username);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("[insight-web] Failed to change password for '" + username + "'");
+            return false;
+        } finally {
+            authConnection.disconnect(connection);
+        }
+
+        // If the number of affected rows was greater than zero, then the password was successfully changed.
         return status >= 0;
     }
 
