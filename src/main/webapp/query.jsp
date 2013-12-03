@@ -18,52 +18,48 @@
             <c:otherwise>
                 <h2>Query Info</h2>
                 <form method="POST" form class="form-inline" action="query" role="form">
-                    <div class="form-group">
-                        <label class="sr-only" for="inputWorld1">World</label>
-                        <input type="text" class="form-control" id="inputWorld1" placeholder="World" name="world">
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <input type="text" class="form-control" placeholder="World" name="world">
+                        </div>
+                        <div class="form-group col-xs-2">
+                            <input type="text" class="form-control" placeholder="X" name="x">
+                        </div>
+                        <div class="form-group col-xs-2">
+                            <input type="text" class="form-control" placeholder="Y" name="y">
+                        </div>
+                        <div class="form-group col-xs-2">
+                            <input type="text" class="form-control" placeholder="Z" name="z">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="inputX1">X</label>
-                        <input type="text" class="form-control" id="inputX1" placeholder="X" name="x">
+                    </br>
+                    <div class="row">
+                        <div class="form-group col-xs-5">
+                            <input type="text" class="form-control" placeholder="Radius" name="radius">
+                        </div>
+                        <div class="form-group col-xs-5">
+                            <input type="text" class="form-control" placeholder="Time Since" name="timeSince">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="inputY1">Y</label>
-                        <input type="text" class="form-control" id="inputY1" placeholder="Y" name="y">
+                    </br>
+                    <div class="row">
+                        <div class="form-group col-xs-5">
+                            <input type="text" class="form-control" placeholder="Players" name="players">
+                        </div>
+                        <div class="form-group col-xs-5">
+                            <input type="text" class="form-control" placeholder="Entities" name="entities">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="inputZ1">Z</label>
-                        <input type="text" class="form-control" id="inputZ1" placeholder="Z" name="z">
+                    </br>
+                    <div class="row">
+                        <div class="form-group col-xs-5">
+                            <input type="text" class="form-control" placeholder="Actions" name="actions">
+                        </div>
+                        <div class="form-group col-xs-5">
+                            <input type="text" class="form-control" placeholder="Blocks" name="blocks">
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="sr-only" for="inputRadius1">Radius</label>
-                        <input type="text" class="form-control" id="inputRadius1" placeholder="Radius" name="radius">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="inputPlayers1">Players</label>
-                        <input type="text" class="form-control" id="inputPlayers1" placeholder="Players" name="players">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="sr-only" for="inputEntities1">Entities</label>
-                        <input type="text" class="form-control" id="inputEntities1" placeholder="Entities" name="entities">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="sr-only" for="inputActions1">Actions</label>
-                        <input type="text" class="form-control" id="inputActions1" placeholder="Actions" name="actions">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="sr-only" for="inputBlocks1">Blocks</label>
-                        <input type="text" class="form-control" id="inputBlocks1" placeholder="Blocks" name="blocks">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="sr-only" for="inputTimeSince1">Time Since</label>
-                        <input type="text" class="form-control" id="inputTimeSince1" placeholder="Time Since" name="timeSince">
-                    </div>
-
+                    </br>
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
 
