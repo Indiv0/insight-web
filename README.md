@@ -53,9 +53,9 @@ To ensure a secure environment and reduce the risk of a MITM attack, please enab
 CREATE DATABASE insight;
 ```
 
-* Run the server at least one to create the property files (`insightweb-auth.properties`, `insightweb-main.properties`, `insightweb.properties`).
+* Run the server at least once to create the property files (`insightweb-auth.properties`, `insightweb-main.properties`, `insightweb.properties`).
 
-* Replace the placeholder values.
+* Replace the placeholder values:
 
   * In `insightweb.properties`, modify any needed configuration parameters.
 
