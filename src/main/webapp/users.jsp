@@ -69,27 +69,76 @@
                 <a class="btn btn-lg btn-primary" href="users" role="button">Return</a>
             </c:when>
             <c:otherwise>
-                <form method="POST" class="form-signin" action="users?registerUser" onsubmit="hashPassword('registerUser', 'password');" name="registerUser">
+                <form method="POST" class="form-horizontal" action="users?registerUser" onsubmit="hashPassword('registerUser', 'password');" name="registerUser">
                     <h3 class="form-signin-heading">Register a New User</h3>
-                    <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required>
-                    <input type="rolename" class="form-control" name="rolename" placeholder="Role Name">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+                    <div class="form-group">
+                        <label for="inputUsername1" class="col-sm-2 control-label">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="username" id="inputUsername1" placeholder="Username" required autofocus>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password" id="inputPassword1" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputRolename1" class="col-sm-2 control-label">Rolename</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="rolename" id="inputRolename1" placeholder="Rolename">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Register</button>
+                        </div>
+                    </div>
                 </form>
-                <form method="POST" class="form-signin" action="users?deleteUser" name="deleteUser">
+
+                <form method="POST" class="form-horizontal" action="users?deleteUser" name="deleteUser">
                     <h3 class="form-signin-heading">Delete a User</h3>
-                    <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
+                    <div class="form-group">
+                        <label for="inputUsername2" class="col-sm-2 control-label">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="username" id="inputUsername2" placeholder="Username" required autofocus>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Delete</button>
+                        </div>
+                    </div>
                 </form>
-                <form method="POST" class="form-signin" action="users?registerRole" name="addRole">
+
+                <form method="POST" class="form-horizontal" action="users?registerRole" name="addRole">
                     <h3 class="form-signin-heading">Add a New Role</h3>
-                    <input type="rolename" class="form-control" name="rolename" placeholder="Role Name" required autofocus>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+                    <div class="form-group">
+                        <label for="inputRolename2" class="col-sm-2 control-label">Rolename</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="rolename" id="inputRolename2" placeholder="Rolename" required autofocus>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Add</button>
+                        </div>
+                    </div>
                 </form>
-                <form method="POST" class="form-signin" action="users?deleteRole" name="deleteRole">
+
+                <form method="POST" class="form-horizontal" action="users?deleteRole" name="deleteRole">
                     <h3 class="form-signin-heading">Delete a Role</h3>
-                    <input type="rolename" class="form-control" name="rolename" placeholder="Role Name" required autofocus>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
+                    <div class="form-group">
+                        <label for="inputRolename3" class="col-sm-2 control-label">Rolename</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="rolename" id="inputRolename3" placeholder="Rolename" required autofocus>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Delete</button>
+                        </div>
+                    </div>
                 </form>
             </c:otherwise>
         </c:choose>

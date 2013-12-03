@@ -11,6 +11,7 @@
             <input type="text" class="form-control" name="url" placeholder="URL" required> (Currently: ${dbUsername})
             <input type="text" class="form-control" name="port" placeholder="Port" required> (Currently: ${dbUsername})
             <input type="text" class="form-control" name="name" placeholder="Database Name" required> (Currently: ${dbName})
+            </br>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Configure</button>
         </form>
         ${problem}

@@ -9,7 +9,7 @@
             <%@ page session="true"%>
             User "${pageContext.request.remoteUser}" has been logged out.
 
-            <br/><br/>
+            <br/>
             <a class="btn btn-lg btn-primary" href=".." role="button">Return</a>
         </div>
     </jsp:body>

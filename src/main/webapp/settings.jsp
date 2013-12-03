@@ -18,10 +18,19 @@
                 <a class="btn btn-lg btn-primary" href="settings" role="button">Return</a>
             </c:when>
             <c:otherwise>
-                <form method="POST" class="form-signin" action="settings?changePassword" onsubmit="hashPassword('changePassword', 'password');" name="changePassword">
+                <form method="POST" class="form-horizontal" action="settings?changePassword" onsubmit="hashPassword('changePassword', 'password');" name="changePassword">
                     <h2 class="form-signin-heading">Change Password</h2>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required autofocus>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Change</button>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password" id="inputPassword1" placeholder="Password" required autofocus>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Change</button>
+                        </div>
+                    </div>
                 </form>
             </c:otherwise>
         </c:choose>
