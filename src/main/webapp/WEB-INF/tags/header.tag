@@ -7,3 +7,4 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://getbootstrap.com/examples/grid/grid.css">
 <link rel="stylesheet" href="https://getbootstrap.com/examples/signin/signin.css">
+<link rel="stylesheet" href="http://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-navbar.css">

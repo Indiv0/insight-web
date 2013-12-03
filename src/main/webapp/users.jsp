@@ -9,7 +9,10 @@
         <script src="public/js/hash.js"></script>
     </jsp:attribute>
     <jsp:body>
-        <h1>User Administration</h1>
+        <div class="page-header">
+            <h1>User Administration</h1>
+        </div>
+
         <h2>Users List</h2>
         <c:choose>
             <c:when test="${not empty users}">

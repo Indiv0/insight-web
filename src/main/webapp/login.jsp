@@ -9,8 +9,10 @@
         <script src="public/js/hash.js"></script>
     </jsp:attribute>
     <jsp:body>
+        <div class="page-header">
+            <h1>Please Sign In</h1>
+        </div>
         <form method="POST" class="form-horizontal" action="j_security_check" onsubmit="hashPassword('login', 'j_password');" name="login">
-            <h1 class="form-signin-heading">Please Sign In</h1>
             <div class="form-group">
                 <label for="inputUsername1" class="col-sm-2 control-label">Username</label>
                 <div class="col-sm-10">

@@ -9,7 +9,9 @@
         <script src="public/js/hash.js"></script>
     </jsp:attribute>
     <jsp:body>
-        <h1>Settings</h1>
+        <div class="page-header">
+            <h1>Settings</h1>
+        </div>
         <c:choose>
             <c:when test="${not empty info}">
                 ${info}

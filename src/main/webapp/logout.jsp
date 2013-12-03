@@ -4,8 +4,10 @@
 
 <t:template>
     <jsp:body>
-        <div class="jumbotron">
+        <div class="page-header">
             <h1>Logout</h1>
+        </div>
+        <div class="jumbotron">
             <%@ page session="true"%>
             User "${pageContext.request.remoteUser}" has been logged out.
 
