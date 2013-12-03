@@ -31,17 +31,17 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="/"><span class="glyphicon glyphicon-home"> Home</a></li>
-                            <li><a href="about"><span class="glyphicon glyphicon-home"> About</a></li>
+                            <li><a href="about"><span class="glyphicon glyphicon-question-sign"> About</a></li>
                             <c:if test="${not empty pageContext.request.remoteUser}">
                                 <li><a href="connect"><span class="glyphicon glyphicon-link"> Connect</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Action <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="settings"><span class="glyphicon glyphicon-pencil"> Change Settings</a></li>
+                                        <li><a href="settings"><span class="glyphicon glyphicon-pencil"> Settings</a></li>
                                         <li><a href="query"><span class="glyphicon glyphicon-edit"> Query</a></li>
                                         <li class="divider"></li>
                                         <li class="dropdown-header">Administration</li>
-                                        <li><a href="users"><span class="fa fa-bar-chart-o"> User Administration</a></li>
+                                        <li><a href="users"><span class="fa fa-bar-chart-o"> Users</a></li>
                                     </ul>
                                 </li>
                             </c:if>

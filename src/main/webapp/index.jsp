@@ -8,7 +8,7 @@
         <div class="jumbotron">
             <h1>Insight Administration</h1>
             <p>This site allows you to administrate the Insight database.</p>
-            <h1>SQL Status</h1>
+            <h2>SQL Status</h2>
             ${connectionInfo}
         </div>
     </jsp:body>
