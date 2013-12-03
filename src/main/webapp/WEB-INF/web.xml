@@ -42,6 +42,10 @@
         <servlet-name>SettingsServlet</servlet-name>
         <servlet-class>in.nikitapek.insightweb.servlet.SettingsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>QueryServlet</servlet-name>
+        <servlet-class>in.nikitapek.insightweb.servlet.QueryServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>IndexServlet</servlet-name>
@@ -71,6 +75,14 @@
         <servlet-name>SettingsServlet</servlet-name>
         <url-pattern>/settings</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QueryServlet</servlet-name>
+        <url-pattern>/query</url-pattern>
+    </servlet-mapping>
+
+    <security-role>
+        <role-name>insight-admin</role-name>
+    </security-role>
 
     <security-role>
         <role-name>insight-user</role-name>
@@ -85,6 +97,7 @@
         </web-resource-collection>
 
         <auth-constraint>
+            <role-name>insight-admin</role-name>
             <role-name>insight-user</role-name>
         </auth-constraint>
 

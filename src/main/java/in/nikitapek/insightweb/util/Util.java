@@ -1,6 +1,7 @@
 package in.nikitapek.insightweb.util;
 
 import in.nikitapek.insightjdbc.RealmProperties;
+import in.nikitapek.insightjdbc.SQL;
 import in.nikitapek.insightweb.Configuration;
 import in.nikitapek.insightweb.SQLConnection;
 
@@ -50,6 +51,7 @@ public class Util {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, rolename);
             status = preparedStatement.executeUpdate();
+            SQL.commit(connection);
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("[insight-web] Failed to register user with credentials: '" + username + "', '" + password + "', '" + rolename + "'");
@@ -71,6 +73,7 @@ public class Util {
             PreparedStatement preparedStatement = connection.prepareStatement(ADD_ROLE_QUERY);
             preparedStatement.setString(1, rolename);
             preparedStatement.executeUpdate();
+            SQL.commit(connection);
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("[insight-web] Failed to add role: '" + rolename + "'");
@@ -96,6 +99,7 @@ public class Util {
             preparedStatement = connection.prepareStatement(REMOVE_USER_QUERY);
             preparedStatement.setString(1, username);
             preparedStatement.executeUpdate();
+            SQL.commit(connection);
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("[insight-web] Failed to remove user '" + username + "'");
@@ -117,6 +121,7 @@ public class Util {
             PreparedStatement preparedStatement = connection.prepareStatement(REMOVE_ROLE_QUERY);
             preparedStatement.setString(1, rolename);
             preparedStatement.executeUpdate();
+            SQL.commit(connection);
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("[insight-web] Failed to remove role '" + rolename + "'");
@@ -139,6 +144,7 @@ public class Util {
             preparedStatement.setString(1, password);
             preparedStatement.setString(2, username);
             preparedStatement.executeUpdate();
+            SQL.commit(connection);
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("[insight-web] Failed to change password for '" + username + "'");
@@ -159,6 +165,7 @@ public class Util {
         try {
             Statement getUsersStatement = connection.createStatement();
             ResultSet resultSet = getUsersStatement.executeQuery(GET_USERS_QUERY);
+            SQL.commit(connection);
 
             while (resultSet.next()) {
                 users.put(resultSet.getString("user_name"), resultSet.getString("role_name"));
@@ -182,6 +189,7 @@ public class Util {
         try {
             Statement getRolesStatement = connection.createStatement();
             ResultSet resultSet = getRolesStatement.executeQuery(GET_ROLES_QUERY);
+            SQL.commit(connection);
 
             while (resultSet.next()) {
                 roles.add(resultSet.getString("role_name"));

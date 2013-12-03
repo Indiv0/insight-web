@@ -38,6 +38,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="settings">Change Settings</a></li>
+                                        <li><a href="query">Query</a></li>
                                         <li class="divider"></li>
                                         <li class="dropdown-header">Administration</li>
                                         <li><a href="users">User Administration</a></li>
