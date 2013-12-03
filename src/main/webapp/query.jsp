@@ -11,13 +11,13 @@
             <h1>Database Query</h1>
         </div>
         <c:choose>
-            <c:when test="${connected}">
+            <c:when test="${connected == 'false'}">
                 <p>Please connect to the Insight logging database first.</p>
                 <p><a class="btn btn-lg btn-primary" href="connect" role="button">Connect &raquo;</a></p>
             </c:when>
             <c:otherwise>
                 <h2>Query Info</h2>
-                <form method="POST" form class="form-inline" action="users?registerUser" role="form">
+                <form method="POST" form class="form-inline" action="query" role="form">
                     <div class="form-group">
                         <label class="sr-only" for="inputWorld1">World</label>
                         <input type="text" class="form-control" id="inputWorld1" placeholder="World" name="world">
