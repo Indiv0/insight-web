@@ -17,14 +17,17 @@ public class IndexServlet extends HttpServlet {
 
         request.setAttribute("connected", Util.insightConnection.isConnected() ? "yes" : "no");
 
+        String connectionInfo;
         if (Util.insightConnection.isConnected()) {
-            String connectionInfo = "";
-            connectionInfo += "<p> Username: " + request.getSession().getAttribute("username") + "</p>";
-            connectionInfo += "<p> URL: " + request.getSession().getAttribute("url") + "</p>";
-            connectionInfo += "<p> Port: " + request.getSession().getAttribute("port") + "</p>";
-            request.setAttribute("connectionInfo", connectionInfo);
+            connectionInfo = "<div class=\"alert alert-info\">You're currently connected to the Insight logging server.</div>";
+            connectionInfo += "<p> Username: " + Util.insightConnection.getUsername() + "</p>";
+            connectionInfo += "<p> URL: " + Util.insightConnection.getURL() + "</p>";
+        } else {
+            connectionInfo = "<div class=\"alert alert-warning\">You're not currently connected to the Insight logging server.</div>";
+            connectionInfo += "<p><a class=\"btn btn-lg btn-primary\" href=\"connect\" role=\"button\">Connect SQL &raquo;</a></p>";
         }
 
+        request.setAttribute("connectionInfo", connectionInfo);
         request.getRequestDispatcher(page).forward(request, response);
     }
 }
