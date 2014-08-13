@@ -1,4 +1,4 @@
-insight-web
+insight-web [![Travis CI](https://secure.travis-ci.org/MinerAp/pearl-nerf.png)](http://travis-ci.org/#!/MinerAp/pearl-nerf)
 ===========
 
 The administration web-interface for the Insight plugin.
