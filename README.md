@@ -1,5 +1,6 @@
-insight-web [![Travis CI](https://secure.travis-ci.org/MinerAp/insight-web.png)](http://travis-ci.org/#!/MinerAp/insight-web)
-===========
+# insight-web
+[![Travis CI](https://secure.travis-ci.org/MinerAp/insight-web.png)](http://travis-ci.org/#!/MinerAp/insight-web)
+[![Coverage Status](https://img.shields.io/coveralls/MinerAp/insight-web.svg)](https://coveralls.io/r/MinerAp/insight-web?branch=master)
 
 The administration web-interface for the Insight plugin.
 
